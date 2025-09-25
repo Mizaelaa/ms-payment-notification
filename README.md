@@ -80,6 +80,6 @@ Fluxo completo de processamento de pagamento.
 
 Mizaela e Aline 
 
-[Mizaelaa](https://github.com/Mizaelaa)  
-[23Aline](https://github.com/23Aline)
+- [Mizaelaa](https://github.com/Mizaelaa)  
+- [23Aline](https://github.com/23Aline)
 
