@@ -4,12 +4,12 @@ Este projeto implementa dois microsserviços independentes (**Pagamento** e **No
 
 
 
-### 1. Clonar o repositório
+### Clonar o repositório
 ```bash
 git clone https://github.com/Mizaelaa/ms-payment-notification.git
 cd <nome-do-repositorio>
 
-Subir containers do banco e mensageria
+ ### Subir containers do banco e mensageria
 docker-compose up -d
 
 
@@ -21,7 +21,7 @@ Painel do RabbitMQ: http://localhost:15672
 
 Usuário: guest | Senha: guest
 
-3. Rodar o serviço de pagamento
+### 3. Rodar o serviço de pagamento
 cd ms-payment-service
 npm install
 npm start
@@ -29,7 +29,7 @@ npm start
 
 O serviço sobe em: http://localhost:3000
 
-4. Rodar o serviço de notificação
+### 4. Rodar o serviço de notificação
 cd ms-notification-service
 npm install
 npm start
@@ -37,7 +37,7 @@ npm start
 
 O serviço sobe em: http://localhost:3001
 
-💳 Fluxo de pagamento
+### 💳 Fluxo de pagamento
 
 Cliente envia requisição POST /payments para o serviço de pagamento.
 
@@ -53,7 +53,7 @@ Serviço de pagamento envia nova mensagem.
 
 Serviço de notificação recebe e envia notificação de confirmação.
 
-🔎 Teste rápido
+### 🔎 Teste rápido
 Criar um pagamento
 curl -X POST http://localhost:3000/payments \
      -H "Content-Type: application/json" \
