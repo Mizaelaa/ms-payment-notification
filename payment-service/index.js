@@ -11,13 +11,16 @@ const CONFIRM_QUEUE = process.env.CONFIRM_QUEUE || 'transaction_confirmations';
 const AUTO_CONFIRM_MS = parseInt(process.env.AUTO_CONFIRM_MS || '0', 10);
 
 const pool = new Pool({
-  host: process.env.PGHOST || 'localhost',
-  user: process.env.PGUSER || 'pguser',
-  password: process.env.PGPASSWORD || 'pgpass',
-  database: process.env.PGDATABASE || 'paymentsdb',
-  port: process.env.PGPORT || 5432,
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
 });
 
+pool.connect()
+  .then(() => console.log('✅ Conectado ao Postgres!'))
+  .catch(err => console.error('❌ Erro ao conectar no Postgres:', err));
 let amqpConn, channel;
 
 async function setupAmqp() {
