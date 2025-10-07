@@ -1,17 +1,68 @@
 # 🛒 Microsserviços de Pagamento e Notificação
 
-Este projeto implementa dois microsserviços independentes (**Pagamento** e **Notificação**) para um sistema de e-commerce, utilizando **Node.js**, **PostgreSQL**, **RabbitMQ** e **Docker Compose**.
+Microserviço de pagamento e notificação desenvolvido em Node.js, utilizando Postgres como banco de dados e RabbitMQ como sistema de mensageria.
 
+O projeto implementa um fluxo assíncrono de transações, notificando o usuário sobre a solicitação e confirmação do pagamento.
 
+## Tecnologias Utilizadas
+- **Node.js (Express)**
+- **PostgreSQL**
+- **RabbitMQ**
+- **Docker & Docker Compose**
+- **Nodemon (para desenvolvimento)**
 
-### Clonar o repositório
+##  Pré-requisitos
+- **Node.js >= v22** 
+- **Docker e Docker Compose**
+- **Git** 
+
+## Clonar o repositório
+Abra o terminal em seu computador e use o comando:
+
 ```bash
 git clone https://github.com/Mizaelaa/ms-payment-notification.git
+```
+Em seguida:
+
+```bash
 cd <nome-do-repositorio>
+```
 
- ### Subir containers do banco e mensageria
+Certifique-se de estar na pasta do projeto principal:
+
+```bash
+cd ms-payment-notification
+```
+
+Inicie os serviços via Docker Compose:
+
+```bash
+docker-compose down -v
+```
+
+Em seguida:
+
+```bash
 docker-compose up -d
+```
 
+Entre nas pastas dos serviços e instale as dependências:
+
+```bash
+cd payment-service
+npm install
+npm start
+```
+
+```bash
+cd ..
+cd notification-service
+npm install
+npm start
+```
+
+ ## Subir containers do banco e mensageria
+docker-compose up -d
 
 Postgres: localhost:5432
 
@@ -21,23 +72,7 @@ Painel do RabbitMQ: http://localhost:15672
 
 Usuário: guest | Senha: guest
 
-### 3. Rodar o serviço de pagamento
-cd ms-payment-service
-npm install
-npm start
-
-
-O serviço sobe em: http://localhost:3000
-
-### 4. Rodar o serviço de notificação
-cd ms-notification-service
-npm install
-npm start
-
-
-O serviço sobe em: http://localhost:3001
-
-### 💳 Fluxo de pagamento
+## Fluxo de pagamento
 
 Cliente envia requisição POST /payments para o serviço de pagamento.
 
@@ -53,13 +88,22 @@ Serviço de pagamento envia nova mensagem.
 
 Serviço de notificação recebe e envia notificação de confirmação.
 
-### 🔎 Teste rápido
-Criar um pagamento
-curl -X POST http://localhost:3000/payments \
-     -H "Content-Type: application/json" \
-     -d '{"amount": 100}'
+## Teste rápido
+Criar um pagamento (Você pode usar o terminal ou ferramentas como Postman para testar):
 
-Resultado esperado nos logs:
+```bash
+curl -X POST http://localhost:3001/transactions \
+```
+
+```bash
+H "Content-Type: application/json" \
+```
+
+ ```bash
+-d "{\"user_email\":\"teste@exemplo.com\",\"amount\":100}"
+```
+
+## Resultado esperado nos logs:
 
 Serviço de pagamento → Transação criada
 
@@ -78,7 +122,7 @@ Comunicação assíncrona via RabbitMQ.
 Fluxo completo de processamento de pagamento.
 
 
-Mizaela e Aline 
+### Mizaela e Aline 
 
 - [Mizaelaa](https://github.com/Mizaelaa)  
 - [23Aline](https://github.com/23Aline)
