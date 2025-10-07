@@ -121,9 +121,22 @@ Comunicação assíncrona via RabbitMQ.
 
 Fluxo completo de processamento de pagamento.
 
+## Conectando ao Postgres
+
+Para acessar o banco de dados:
+
+ ```bash
+docker exec -it ms-payment-notification-postgres-1 psql -U pguser -d paymentsdb
+```
+
+Para ver as transações:
+
+ ```bash
+SELECT * FROM transactions;
+```
 
 ### Mizaela e Aline 
 
-- [Mizaelaa](https://github.com/Mizaelaa)  
-- [23Aline](https://github.com/23Aline)
+-🔗 [Mizaelaa](https://github.com/Mizaelaa)  
+-🔗 [23Aline](https://github.com/23Aline)
 
